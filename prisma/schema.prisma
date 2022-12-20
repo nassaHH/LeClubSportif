@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model club {
+  IDClub     Int    @id @unique(map: "ID_UNIQUE") @default(autoincrement())
+  Nom        String @db.VarChar(100)
+  Email      String @db.VarChar(100)
+  Adresse    String @db.VarChar(100)
+  Telephone  String @db.VarChar(20)
+  CodePostal Int
+  Ville      String @db.VarChar(50)
+  Pays       String @db.VarChar(45)
+}
+
+model contrat {
+  idContrat             Int    @id @unique(map: "idContrat_UNIQUE") @default(autoincrement())
+  RemplisDeposeRIB      Int    @db.TinyInt
+  RIB                   Int    @db.TinyInt
+  BeneficiaireNonPayeur Int    @db.TinyInt
+  Beneficiaire          String @db.VarChar(45)
+  Banque                String @db.VarChar(100)
+  IBAN                  String @db.VarChar(27)
+  BIC                   String @db.VarChar(9)
+  Utilisateur_IDClient  Int
+
+  @@index([Utilisateur_IDClient], map: "fk_Contrat_Utilisateur1_idx")
+}
+
+model message {
+  idMessage            Int    @id @unique(map: "idMessage_UNIQUE") @default(autoincrement())
+  Objet                String @db.VarChar(100)
+  Message              String @db.LongText
+  Utilisateur_IDClient Int
+
+  @@index([Utilisateur_IDClient], map: "fk_Message_Utilisateur1_idx")
+}
+
+model planning {
+  idPlanning  Int      @id @unique(map: "idPlanning_UNIQUE") @default(autoincrement())
+  NomDuCours  String   @db.VarChar(100)
+  Date        DateTime @db.DateTime(0)
+  Club_IDClub Int
+
+  @@index([Club_IDClub], map: "fk_Planning_Club1_idx")
+}
+
+model utilisateur {
+  IDClient              Int                  @id @unique(map: "ID_UNIQUE") @default(autoincrement())
+  Role                  utilisateur_Role
+  Civilite              utilisateur_Civilite
+  Nom                   String               @db.VarChar(50)
+  Prenom                String               @db.VarChar(50)
+  Email                 String               @unique(map: "Email_UNIQUE") @db.VarChar(100)
+  MDP                   String               @db.VarChar(100)
+  DateDeNaissance       DateTime             @db.Date
+  Adresse               String               @db.VarChar(100)
+  Telephone             String               @db.VarChar(20)
+  CodePostal            Int
+  Ville                 String               @db.VarChar(50)
+  Pays                  String               @db.VarChar(45)
+  ProgrammeEntrainement Int?                 @db.TinyInt
+  Emailing              Int                  @db.TinyInt
+  CGV                   Int                  @db.TinyInt
+  Club                  String?              @db.VarChar(100)
+  Planning_idPlanning   Int?
+  Club_IDClub           Int?
+
+  @@index([Club_IDClub], map: "fk_Utilisateur_Club1_idx")
+  @@index([Planning_idPlanning], map: "fk_Utilisateur_Planning1_idx")
+}
+
+enum utilisateur_Role {
+  Inscrit
+  Adh_rent @map("Adhérent")
+  Admin
+}
+
+enum utilisateur_Civilite {
+  Madame
+  Monsieur
+}
