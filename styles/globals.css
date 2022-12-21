@@ -1,18 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Biryani:wght@900&display=swap');
+
+
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  background: #2980b9;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2c3e50, #2980b9);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2c3e50, #2980b9);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  max-width: 1920px;
+  margin: auto;
+}
+
+.containerPerso {
+  display: flex;
+  margin: 1vw 5vw  0;
 }
 
 a {
-  color: inherit;
+  color: green;
   text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 img {
@@ -20,19 +39,56 @@ img {
   height: auto;
 }
 
-h1,
-h2,
-p,
-ul {
-  margin: 0;
+/* Bouton  */
+
+.btn {
+  border-radius: 10px;
+  -webkit-border-radius: 10px ;
+  -moz-border-radius: 10px ;
+  box-shadow: 5px 5px 5px rgb(0 0 0 / 40%), 
+              -1px -1px 5px rgb(255 255 255 / 40%)!important;
+  padding: 15px;
+  font-weight: 400; 
+  text-transform: uppercase;
+  color: white!important;
+  background-color: rgb(30, 30, 30);
+  transition: all 0.6s ;
 }
 
-ul {
-  padding: 0;
-  list-style: none;
+.btn:hover {
+  background: #2a658e;
+  transition: all 0.6s ;
 }
 
-button {
-  padding: 0.5rem 1rem;
-  font-weight: bold;
+.btn:active {
+  color: black !important;
+}
+
+.btn:focus {
+  background-color: rgb(30, 30, 30);
+  transition: none ;
+}
+
+.active{
+  border-radius: 10px;
+  -webkit-border-radius: 10px ;
+  -moz-border-radius: 10px ;
+  box-shadow: 5px 5px 5px rgb(0 0 0 / 40%), 
+              -1px -1px 5px rgb(255 255 255 / 40%)!important;
+  font-weight: 400; 
+  color: white!important;
+  background-color: rgb(30, 30, 30);
+  transition: none ;
+}
+
+/*  Formulaire  */
+
+.form-select:not([multiple]), .form-control  {
+  position: relative;
+  box-shadow: none;
+  padding: 6px;
+}
+
+label{
+  color:rgb(210, 210, 210);
 }

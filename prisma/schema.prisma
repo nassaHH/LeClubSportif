@@ -75,13 +75,14 @@ model utilisateur {
   @@index([Planning_idPlanning], map: "fk_Utilisateur_Planning1_idx")
 }
 
-enum utilisateur_Role {
-  Inscrit
-  Adh_rent @map("Adhérent")
-  Admin
-}
-
 enum utilisateur_Civilite {
   Madame
   Monsieur
+}
+
+enum utilisateur_Role {
+  Inscrit
+  Adh_rent @map("Adhérent")
+  Coach
+  Admin
 }
