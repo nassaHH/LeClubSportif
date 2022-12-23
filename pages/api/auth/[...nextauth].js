@@ -10,23 +10,24 @@ const authOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
-      type: "credentials",
+      name: "credentials",
       credentials: {},
       async authorize(credentials, req) {
         const { email, password } = credentials;
 
-        // find out user from db
-        if (email === PrismaAdapter(utilisateur.email) || password === PrismaAdapter(utilisateur.MDP)) {
-          return(
-            console.log("yyyyyyyyyyyyyyes"),
-            router.push("/login")
-          )
-        }
-        // if everything is fine
-        throw new Error("invalid credentials");
+        
+        const user = await prisma.utilisateur.findUnique({
+          where: { email: email.credentials, 
+                  //  password : password.credentials 
+              }
+        });
 
-      },
+        if (!user){
+          console.log("ENFIN ")
+        }
+      }
     }),
+
   ],
   pages: {
     signIn: "/compte/connexion",
@@ -43,6 +44,7 @@ const authOptions = {
       return params.token;
     },
   },
+  secret: process.env.JWT_SECRET,
 };
 
 export default NextAuth(authOptions);

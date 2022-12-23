@@ -35,21 +35,21 @@ export default function Nav() {
               <LinkPerso className={`nav-link ${router.pathname == "/contact" ? "active" : ""}`}
                 href="/">Contact</LinkPerso>
             </li>
-            {/* <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <li className="nav-item dropdown">
+              <LinkPerso className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</LinkPerso>
               <div className="dropdown-menu">
-                <a className="dropdown-item" href="#">Action</a>
-                <a className="dropdown-item" href="#">Another action</a>
-                <a className="dropdown-item" href="#">Something else here</a>
+                <LinkPerso className="dropdown-item" href="/admin/listeUtilisateur">Utilisateur</LinkPerso>
+                <LinkPerso className="dropdown-item" href="#"></LinkPerso>
+                <LinkPerso className="dropdown-item" href="#"></LinkPerso>
                 <div className="dropdown-divider"></div>
-                <a className="dropdown-item" href="#">Separated link</a>
+                <LinkPerso className="dropdown-item" href="#"></LinkPerso>
               </div>
-            </li> */}
+            </li>
           </ul>
           {/* <input className="form-control me-sm-2" type="search" placeholder="Search"></input>
             <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button> */}
           <div className='position-absolute top-0 end-0'>
-            <LinkPerso href="/compte/creation" className="btn m-2 ">Inscription</LinkPerso>
+            <LinkPerso href="/compte/Inscription" className="btn m-2 ">Inscription</LinkPerso>
             <LinkPerso href="" className="btn m-2" 
               onClick={ ()=>{ signIn()}}>Connexion</LinkPerso>
           </div>
@@ -74,7 +74,7 @@ const Button = styled.button`
   padding: 10px;
 `
 
-const LinkPerso = styled(Link)`
+export const LinkPerso = styled(Link)`
   margin: 0 10px;
   padding: 10px!important;
   text-transform: uppercase;

@@ -7,7 +7,6 @@ import { signIn } from "next-auth/react";
 export default function Connexion() {
     const [userInfo, setUserInfo] = useState({ email: "", password: "" });
     const handleSubmit = async (e) => {
-      // validate your userinfo
       e.preventDefault();
   
       const res = await signIn("credentials", {

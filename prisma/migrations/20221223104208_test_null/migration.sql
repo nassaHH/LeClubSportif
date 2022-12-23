@@ -1,0 +1,12 @@
+-- AlterTable
+ALTER TABLE `utilisateur` MODIFY `Nom` VARCHAR(50) NULL,
+    MODIFY `Prenom` VARCHAR(50) NULL,
+    MODIFY `MDP` VARCHAR(100) NULL,
+    MODIFY `DateDeNaissance` DATE NULL,
+    MODIFY `Adresse` VARCHAR(100) NULL,
+    MODIFY `Telephone` VARCHAR(20) NULL,
+    MODIFY `CodePostal` INTEGER NULL,
+    MODIFY `Ville` VARCHAR(50) NULL,
+    MODIFY `Pays` VARCHAR(45) NULL,
+    MODIFY `Emailing` TINYINT NULL,
+    MODIFY `CGV` TINYINT NULL;

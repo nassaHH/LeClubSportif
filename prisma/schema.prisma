@@ -51,25 +51,25 @@ model planning {
 }
 
 model utilisateur {
-  IDClient              Int                  @id @unique(map: "ID_UNIQUE") @default(autoincrement())
-  Role                  utilisateur_Role
+  Role                  utilisateur_Role      @default(Inscrit)
   Civilite              utilisateur_Civilite
-  Nom                   String               @db.VarChar(50)
-  Prenom                String               @db.VarChar(50)
+  Nom                   String?              @db.VarChar(50)
+  Prenom                String?              @db.VarChar(50)
   Email                 String               @unique(map: "Email_UNIQUE") @db.VarChar(100)
-  MDP                   String               @db.VarChar(100)
-  DateDeNaissance       DateTime             @db.Date
-  Adresse               String               @db.VarChar(100)
-  Telephone             String               @db.VarChar(20)
-  CodePostal            Int
-  Ville                 String               @db.VarChar(50)
-  Pays                  String               @db.VarChar(45)
+  MDP                   String?              @db.VarChar(100)
+  DateDeNaissance       DateTime?            @db.Date
+  Adresse               String?              @db.VarChar(100)
+  Telephone             String?              @db.VarChar(20)
+  CodePostal            Int?
+  Ville                 String?              @db.VarChar(50)
+  Pays                  String?              @db.VarChar(45)
   ProgrammeEntrainement Int?                 @db.TinyInt
-  Emailing              Int                  @db.TinyInt
-  CGV                   Int                  @db.TinyInt
+  Emailing              Int?                 @db.TinyInt
+  CGV                   Int?                 @db.TinyInt
   Club                  String?              @db.VarChar(100)
   Planning_idPlanning   Int?
   Club_IDClub           Int?
+  IDUser                Int                  @id @unique(map: "ID_UNIQUE") @default(autoincrement())
 
   @@index([Club_IDClub], map: "fk_Utilisateur_Club1_idx")
   @@index([Planning_idPlanning], map: "fk_Utilisateur_Planning1_idx")
